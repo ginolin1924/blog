@@ -1,0 +1,18 @@
+<div class="panel-group lesson_list" id="accordion" role="tablist" aria-multiselectable="true">
+  <% @lessons.each do |lesson| %>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="heading_<%= lesson.id %>">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= lesson.id %>" aria-expanded="true" aria-controls="collapseOne">
+            <span><b>Lesson <%= lesson.level %></b></span> | <%= lesson.title %>
+          </a>
+        </h4>
+      </div>
+      <div id="collapse_<%= lesson.id %>" class="panel-collapse collapse<% if (current_user && current_user.level.to_i == lesson.level) %> in<% end %>" role="tabpanel" aria-labelledby="heading_<%= lesson.id %>">
+        <div class="panel-body">
+          <div class="fr-view"><%= lesson.content.html_safe %></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

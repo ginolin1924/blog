@@ -1,0 +1,35 @@
+<% if notice %>
+    <div class="alert alert-success" role="alert"><%= notice %></div>
+<% end %>
+<% if alert %>
+    <div class="alert alert-warning" role="alert"><%= alert %></div>
+<% end %>
+
+
+
+<div class="col-md-12">
+  <div>
+    <%= link_to("New lesson", new_lesson_path, class: "btn btn-primary pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td width=100 align=center>Lesson</td>
+        <td>Title</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @lessons.each do |lesson| %>
+        <tr>
+          <td align=center><%= lesson.level %></td>
+          <td><%= link_to(lesson.title, lesson_path(lesson)) %></td>
+          <td width=150 align=right>
+              <%= link_to("Edit", edit_lesson_path(lesson), class: "btn btn-sm btn-default")%>
+              <%= link_to("Delete", lesson_path(lesson),    class: "btn btn-sm btn-default", 
+                          method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

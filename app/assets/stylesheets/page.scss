@@ -1,0 +1,21 @@
+// Place all the styles related to the page controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.lesson_list {
+    .panel-heading {
+        padding: 0;
+        
+        a {
+            display: block;
+            padding: 10px 15px;
+            
+            &:hover {
+                text-decoration: none;
+            }
+            span {
+                color: darkblue;
+            }
+        }
+    }
+}

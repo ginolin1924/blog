@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">FunTimeMusic</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar-collapse">
+       <% if is_teacher? %>
+        <ul class="nav navbar-nav">
+          <li><%= link_to '課程管理', lessons_path %></li>
+          <li><%= link_to '帳號管理', users_path %></li>
+        </ul>
+       <% end %>
+      <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a>課程進度 : Lesson <%= current_user.level %></a></li>
+                <li><%= link_to '更改密碼', edit_own_password_path %></li>
+              </ul>
+            </li>
+            <li><%= link_to 'Log out', sign_out_path, method: :delete %></li>
+          <% else %>
+            <% if is_guest? %><li><%= link_to 'Guest' %></li><% end %>
+          	<li><%= link_to 'Log in', delete_guest_path, method: :delete %></li>
+          <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
